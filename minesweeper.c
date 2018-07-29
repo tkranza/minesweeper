@@ -66,7 +66,7 @@ for(j=0; j<n; j++){
         printf(" i : ");
         scanf(" %d", &v);
         if(u<0 || u>m-1 || v<0 || v >n-1) printf(" pogresan unos, ponovite ga \n");
-        if(a[u][v] != -1 && a[u][v] != -2) printf(" tu ste vec bili\n");
+        if(a[u][v] != -1 && a[u][v] != -2 && u>=0 && u<=m-1 && v>=0 && v<=n-1) printf(" tu ste vec bili\n");
         } while(u<0 || u>m-1 || v<0 || v >n-1 || a[u][v] != -1 && a[u][v] != -2);
 if(a[u][v] == -2){
 for(i=0; i<m; i++){
