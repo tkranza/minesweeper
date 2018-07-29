@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void pros(int a[][20],int u, int v,int m,int n){
+void pros(int a[][50],int u, int v,int m,int n){
 
 int b = 0, i2,j2;
 
@@ -25,22 +25,23 @@ if(b == 0){
 
 int main(void){
 
-int m, n, a[20][20], k, i, j, kp, u,v, i2, j2, b, b2;
+int m, n, a[50][50], k, i, j, kp, u,v, i2, j2, b, b2,u2,v2;
 do{
-printf(" unesi 1. dimenziju polja : ");
+printf(" unesi 1. dimenziju polja od 1 do 50 : ");
 scanf(" %d", &m);
-if(m<=0) printf(" neispravan unos\n");
-} while(m<=0);
+if(m<=0 || m>50) printf(" neispravan unos\n");
+} while(m<=0 || m>50);
 do{
-printf(" unesi 2. dimenziju polja : ");
+printf(" unesi 2. dimenziju polja od 1 do 50 : ");
 scanf(" %d", &n);
-if(n<=0) printf(" neispravan unos\n");
-} while(n<=0);
+if(n<=0 || n>50) printf(" neispravan unos\n");
+} while(n<=0 || n>50);
 do{
 printf(" koliko mina na polju ? : ");
 scanf(" %d", &k);
-if(k>m*n) printf(" nestane toliko mina u polje\n");
-} while(k>m*n);
+if(k<=0) printf(" mora biti barem jedna mina u polju\n");
+if(k>m*n) printf(" ne stane toliko mina u polje\n");
+} while(k>m*n || k<=0);
 
 srand(time(0));
 
@@ -61,10 +62,12 @@ for(j=0; j<n; j++){
 for(i=0; i<m; i++)
 for(j=0; j<n; j++){
         do{
-        printf(" na koje polje zelite stati : ");
-        scanf(" %d", &u);
+        printf(" na koje polje zelite stati ? : ");
+        scanf(" %d", &u2);
         printf(" i : ");
-        scanf(" %d", &v);
+        scanf(" %d", &v2);
+        u = u2 - 1;
+        v = v2 - 1;
         if(u<0 || u>m-1 || v<0 || v >n-1) printf(" pogresan unos, ponovite ga \n");
         if(a[u][v] != -1 && a[u][v] != -2 && u>=0 && u<=m-1 && v>=0 && v<=n-1) printf(" tu ste vec bili\n");
         } while(u<0 || u>m-1 || v<0 || v >n-1 || a[u][v] != -1 && a[u][v] != -2);
