@@ -8,13 +8,13 @@ int m, n, a[20][20], k, i, j, kp, u,v, i2, j2, b, b2=0;
 do{
 printf(" unesi 1. dimenziju polja : ");
 scanf(" %d", &m);
-if(m<=0) printf(" neispravan unos\n");
-} while(m<=0);
+if(m<=0 || m>20) printf(" neispravan unos\n");
+} while(m<=0 || m>20);
 do{
 printf(" unesi 2. dimenziju polja : ");
 scanf(" %d", &n);
-if(n<=0) printf(" neispravan unos\n");
-} while(n<=0);
+if(n<=0 || n>20) printf(" neispravan unos\n");
+} while(n<=0 || n>20);
 do{
 printf(" koliko mina na polju ? : ");
 scanf(" %d", &k);
