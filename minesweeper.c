@@ -1,6 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void gener(int a[][50],int k, int m, int n, int z){
+
+int i, j, kp;
+
+kp = k;
+
+if(z==0){
+
+for(i=0; i<m; i++)
+for(j=0; j<n; j++){
+        if(kp){
+        a[i][j] = -(rand() % 2) - 1;
+            if(a[i][j] == -2) kp--;
+} else a[i][j] = -1;
+}
+}
+
+if(z==1){
+
+ for(i=0; i<m; i++)
+for(j=0; j<n; j++){
+        if(kp && a[i][j] == -1){
+        a[i][j] = -(rand() % 2) - 1;
+            if(a[i][j] == -2) kp--;
+}
+}
+}
+
+z=1;
+
+if(kp == 0) return;
+
+if(kp != 0) gener(a, kp, m,n, z);
+
+}
+
+
 void pros(int a[][50],int u, int v,int m,int n){
 
 int b = 0, i2,j2;
@@ -25,7 +62,7 @@ if(b == 0){
 
 int main(void){
 
-int m, n, a[50][50], k, i, j, kp, u,v, i2, j2, b, b2,u2,v2;
+int m, n, a[50][50], k, i, j, kp, u,v, i2, j2, b, b2,u2,v2, z=0;
 do{
 printf(" unesi 1. dimenziju polja od 1 do 50 : ");
 scanf(" %d", &m);
@@ -45,18 +82,7 @@ if(k>m*n) printf(" ne stane toliko mina u polje\n");
 
 srand(time(0));
 
-do{
-    kp = k;
-for(i=0; i<m; i++){
-for(j=0; j<n; j++){
-        if(kp){
-            a[i][j] = -(rand() % 3);
-            if(a[i][j] == -2) kp--;
-            else a[i][j] = -1;
-        } else a[i][j] = -1;
-}
-}
-}while(kp != 0);
+gener(a,k,m,n, z);
 
 
 for(i=0; i<m; i++)
