@@ -1,39 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void gener(int a[][50],int k, int m, int n, int z){
 
-int i, j, kp;
+void gener(int a[][50],int k, int m, int n){
 
-kp = k;
-
-if(z==0){
+int i, j;
 
 for(i=0; i<m; i++)
-for(j=0; j<n; j++){
-        if(kp){
-        a[i][j] = -(rand() % 2) - 1;
-            if(a[i][j] == -2) kp--;
-} else a[i][j] = -1;
+    for(j=0; j<n; j++)
+       a[i][j] = -1;
+
+while(k != 0){
+
+    i = rand() % m;
+    j = rand() % n;
+
+if(a[i][j] != -2){
+
+a[i][j] = -2;
+--k;
 }
 }
-
-if(z==1){
-
- for(i=0; i<m; i++)
-for(j=0; j<n; j++){
-        if(kp && a[i][j] == -1){
-        a[i][j] = -(rand() % 2) - 1;
-            if(a[i][j] == -2) kp--;
-}
-}
-}
-
-z=1;
-
-if(kp == 0) return;
-
-if(kp != 0) gener(a, kp, m,n, z);
 
 }
 
@@ -82,7 +69,7 @@ if(k>m*n) printf(" ne stane toliko mina u polje\n");
 
 srand(time(0));
 
-gener(a,k,m,n, z);
+gener(a,k,m,n);
 
 
 for(i=0; i<m; i++)
